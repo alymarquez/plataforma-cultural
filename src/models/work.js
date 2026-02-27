@@ -4,13 +4,11 @@ const {
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Work extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
     static associate(models) {
-      // define association here
+      Work.hasMany(models.Review, {
+        foreignKey: 'workId',
+        as: 'reviews'
+      })
     }
   }
   Work.init({
@@ -18,7 +16,10 @@ module.exports = (sequelize, DataTypes) => {
     description: DataTypes.TEXT,
     coverImage: DataTypes.STRING,
     type: DataTypes.STRING,
-    releaseYear: DataTypes.INTEGER
+    releaseYear: DataTypes.INTEGER,
+    externalId: DataTypes.STRING,
+    externalSource: DataTypes.STRING,
+    language: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'Work',

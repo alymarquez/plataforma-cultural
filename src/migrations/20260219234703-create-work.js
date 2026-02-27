@@ -24,6 +24,15 @@ module.exports = {
       releaseYear: {
         type: Sequelize.INTEGER
       },
+      externalId: {
+        type: Sequelize.STRING
+      },
+      externalSource: {
+        type: Sequelize.STRING
+      },
+      language: {
+        type: Sequelize.STRING
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
